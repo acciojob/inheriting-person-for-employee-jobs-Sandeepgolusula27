@@ -1,39 +1,27 @@
-// complete this js code
-// function Person(name, age) {}
 
-// function Employee(name, age, jobTitle) {}
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
 
-// // Do not change code below this line
-// window.Person = Person;
-// window.Employee = Employee
-function Person(name, age) {
-  this.name = name;
-  this.age = age;
+  greet() {
+    console.log(`Hello, my name is ${this.name}, I am ${this.age} years old.`);
+  }
 }
 
-// Add greet method to Person prototype
-Person.prototype.greet = function () {
-  console.log(`Hello, my name is ${this.name}, I am ${this.age} years old.`);
-};
+class Employee extends Person {
+  constructor(name, age, jobTitle) {
+    // Call the parent constructor to set name and age
+    super(name, age);
+    this.jobTitle = jobTitle;
+  }
 
-function Employee(name, age, jobTitle) {
-  // Call Person constructor to initialize name and age
-  Person.call(this, name, age);
-  this.jobTitle = jobTitle;
+  jobGreet() {
+    console.log(`Hello, my name is ${this.name}, I am ${this.age} years old, and my job title is ${this.jobTitle}.`);
+  }
 }
 
-// Inherit from Person
-Employee.prototype = Object.create(Person.prototype);
-Employee.prototype.constructor = Employee;
-
-// Add jobGreet method to Employee prototype
-Employee.prototype.jobGreet = function () {
-  console.log(
-    `Hello, my name is ${this.name}, I am ${this.age} years old, and my job title is ${this.jobTitle}.`
-  );
-};
-
-// Do not change code below this line
+// Do not change the code below this line
 window.Person = Person;
 window.Employee = Employee;
-
